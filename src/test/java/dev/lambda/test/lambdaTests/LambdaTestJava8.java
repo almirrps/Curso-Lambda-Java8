@@ -48,7 +48,8 @@ public class LambdaTestJava8 {
     @Test
     public void test1() {
         // -- setup --
-        final AtomicInteger soma = new AtomicInteger(0);
+    	// Criando uma variável final para ser utilizada dentro da Lambda do exercício proposto
+        final AtomicInteger soma = new AtomicInteger(0);  //AtomicInteger ajuda a manter uma mesma instância
 
         final Thread minhaTreadTradicional = new Thread(new Runnable() {
             @Override
@@ -62,7 +63,7 @@ public class LambdaTestJava8 {
         // 1) faça uma thread imitando o comportamento da thread acima
         // 2) use uma função lambda para representar o Runnable
 
-        final Thread minhaTreadLambda = null; // ... seu código ao invés de 'null' ...
+        final Thread minhaTreadLambda = new Thread(() -> soma.incrementAndGet()); // ... seu código ao invés de 'null' ...
 
         // !!! FIM DA SUA PARTE !!!
 
@@ -92,8 +93,8 @@ public class LambdaTestJava8 {
         assertEquals(Arrays.asList(1, 2, 3, 4, 5), listaDeNumeros, TESTE_QUEBRADO);
 
         // -- when --
-        for (Integer integer : listaDeNumeros) {
-            System.out.print(integer);
+        for (Integer number : listaDeNumeros) {
+            System.out.print(number);
         }
 
         // !!! INÍCIO DA SUA PARTE !!!
@@ -104,6 +105,8 @@ public class LambdaTestJava8 {
         // 4) passe uma função lambda como argumento para o método forEach
 
         // ... seu código ...
+        listaDeNumeros.stream()
+                .forEach(number -> System.out.print(number));
 
         // !!! FIM DA SUA PARTE !!!
 
@@ -132,6 +135,9 @@ public class LambdaTestJava8 {
         // 3) use streams, filter e forEach.
 
         // ... seu código ...
+        listaDeNumeros.stream()
+                .filter(number -> number % 2 == 0)
+                .forEach(number -> System.out.print(number));
 
         // !!! FIM DA SUA PARTE !!!
 
