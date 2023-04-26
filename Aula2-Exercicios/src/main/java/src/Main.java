@@ -1,5 +1,6 @@
 package src;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.*;
 import java.util.stream.Collectors;
 
